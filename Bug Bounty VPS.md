@@ -42,7 +42,7 @@ I wanted to create a dedicated Linux server for my bug hunting and penetration t
 
 ## Hardening & Infrastructure
 
-Before I setup my VPS for vulnerability testing I hardened it according to security best practices. The core theme behind my hardening decision revolved around reducing the attack surface. I disabled every service, open port, and default behavior that wasn't strictly necessary for my activities.
+Before I setup my VPS for vulnerability testing I hardened it according to security best practices. The core theme behind my hardening decisions revolved around reducing the attack surface. I disabled every service, open port, and default behavior that wasn't strictly necessary for my activities.
 
 Key controls applied:
 
@@ -52,7 +52,7 @@ Key controls applied:
 - **Service cleanup** — stopped and disabled unnecessary desktop services like `polkit`, `accounts-daemon`, and `colord`
 - **Kernel hardening** — ASLR, ptrace restrictions, SYN flood protection, IP forwarding disabled, kernel pointer exposure restricted
 - **Filesystem** — `/tmp` and `/dev/shm` mounted `noexec`; restrictive umask; home directory permissions tightened
-- **IPv6 disabled** — not needed for this use case; removes an entire network stack from the surface
+- **IPv6 disabled** — not needed for my case; removes an entire network stack from the surface
 
 **TigerVNC** is used for GUI access when needed and is bound exclusively to `127.0.0.1:5901`. The VNC is connected through an SSH tunnel which encrypts communication and reduces the attack surface with more open ports.
 
@@ -98,7 +98,7 @@ My engagements follow a three-phase approach:
 
 **Phase 3 — Manual Testing** uses Caido to test the most interesting endpoints identified during enumeration. Vulnerability coverage includes XSS, IDOR, SSRF, open redirects, CORS misconfigurations, authentication logic flaws, SQL injection (error-based detection), GraphQL enumeration, and HTTP verb tampering.
 
-Each engagement runs inside an auto-initialized workspace (`new-engagement.sh`) that creates a consistent directory structure, a pre-structured engagement log, and a named tmux session with dedicated windows for recon, testing, monitoring, and shell access. This persistent setup allows me to seamlessly move between phases keeping track of interesting findings. Documentation is also much easier when I take step by step notes to refer to later.
+Each engagement runs inside an auto-initialized workspace (`new-engagement.sh`) that creates a consistent directory structure, a pre-structured engagement log, and a named tmux session with dedicated windows for recon, testing, monitoring, and shell access. This persistent setup allows me to seamlessly move between phases and keep track of interesting findings. Documentation becomes much easier when I take step by step notes to refer to later.
 
 ---
 
