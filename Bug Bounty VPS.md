@@ -138,7 +138,7 @@ Following the same, structured bug hunting workflow allows me to adapt it to any
 <img width="929" height="342" alt="Screenshot 2026-05-20 113851-redacted_dot_app" src="https://github.com/user-attachments/assets/7ac6a7cb-b3d3-4262-b27a-c86a8e5e27fa" />
 
 ### Amass
-<img width="763" height="237" alt="Screenshot 2026-05-20 121315-redacted_dot_app" src="https://github.com/user-attachments/assets/b851e317-432e-4993-8253-18be64d5fb47" />
+
 
 ### Engagement Log Sample
 
