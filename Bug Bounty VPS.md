@@ -109,13 +109,13 @@ The pipeline is:
 
 ```mermaid
 flowchart TD
-    A["Subfinder / Amass / Chaos\nPassive subdomain enumeration"] -->|merged subdomain list| B
-    B["Dnsx\nDNS resolution & validation"] -->|resolved hosts| C
-    C["Httpx\nLive host probing & fingerprinting"] -->|live hosts| D & E
-    D["Gowitness\nVisual screenshot triage"] 
-    E["Gau / waybackurls + Katana\nHistorical & live URL discovery"] -->|full URL pool| F
-    F["GF\nParameter categorization by vuln class"] -->|parameterized endpoints| G
-    G["Caido\nManual vulnerability testing"]
+    A["Subfinder / Amass / Chaos\nPassive Subdomain Enumeration"] -->|Merged Subdomain List| B
+    B["Dnsx\nDNS Resolution & Validation"] -->|Resolved Hosts| C
+    C["Httpx\nLive Host Probing & Fingerprinting"] -->|Live Hosts| D & E
+    D["Gowitness\nVisual Screenshot Triage"] 
+    E["Gau / Waybackurls + Katana\nHistorical & Live URL Discovery"] -->|Full URL Pool| F
+    F["GF\nParameter Categorization by Vuln Class"] -->|Parameterized Endpoints| G
+    G["Caido\nManual Vulnerability Testing"]
 ```
 
 Following the same, structured bug hunting workflow allows me to adapt it to any unique target or program where it's a bunch of wildcard domains or a single primary domain.
