@@ -6,6 +6,9 @@
 ![Stack](https://img.shields.io/badge/Stack-VPS%20%2B%20TigerVNC%20%2B%20Caido-informational?style=flat-square)
 
 ---
+### Ethical and Legal Disclaimer
+> [!IMPORTANT]
+> The following project covers tools and methodologies that are for authorized, ethical hacking engagements ONLY. I do not condone the usage of such tools and methods for malicious or unethical purposes. Follow ALL applicable international and local laws accordingly. I am not liable for any damage done wholly or in part derived from the information provided in this project writeup. The below information contents are for educational purposes only.  
 
 ## Table of Contents
 
@@ -126,13 +129,19 @@ Following the same, structured bug hunting workflow allows me to adapt it to any
 
 ---
 
-## Screenshots of Tools
+## Screenshots of Tools (Redacted for Privacy)
 
-### Subfinder
+### Subfinder 
 <img width="861" height="477" alt="Screenshot 2026-05-20 112503-redacted_dot_app" src="https://github.com/user-attachments/assets/aa38696b-e143-4cf2-9fae-b30e0ce73e8b" />
 
 ### Chaos
 <img width="929" height="342" alt="Screenshot 2026-05-20 113851-redacted_dot_app" src="https://github.com/user-attachments/assets/7ac6a7cb-b3d3-4262-b27a-c86a8e5e27fa" />
+
+### Amass
+<img width="763" height="237" alt="Screenshot 2026-05-20 121315-redacted_dot_app" src="https://github.com/user-attachments/assets/b851e317-432e-4993-8253-18be64d5fb47" />
+
+### Engagement Log Sample
+
 
 <div align="center">
 
