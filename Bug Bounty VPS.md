@@ -107,6 +107,17 @@ Each engagement runs inside an auto-initialized workspace (`new-engagement.sh`) 
 
 The pipeline is:
 
+```mermaid
+flowchart TD
+    A["Subfinder / Amass / Chaos\nPassive subdomain enumeration"] -->|merged subdomain list| B
+    B["dnsx\nDNS resolution & validation"] -->|resolved hosts| C
+    C["httpx\nLive host probing & fingerprinting"] -->|live hosts| D & E
+    D["gowitness\nVisual screenshot triage"] 
+    E["gau / waybackurls + Katana\nHistorical & live URL discovery"] -->|full URL pool| F
+    F["gf\nParameter categorization by vuln class"] -->|parameterized endpoints| G
+    G["Caido\nManual vulnerability testing"]
+```
+
 Subfinder/amass/chaos feed a merged passive subdomain list 
 ↓
 Dnsx resolves it
@@ -131,7 +142,11 @@ Following the same, structured bug hunting workflow allows me to adapt it to any
 
 ## Screenshots of Tools
 
+### Subfinder
 <img width="861" height="477" alt="Screenshot 2026-05-20 112503-redacted_dot_app" src="https://github.com/user-attachments/assets/aa38696b-e143-4cf2-9fae-b30e0ce73e8b" />
+
+### Chaos
+<img width="929" height="342" alt="Screenshot 2026-05-20 113851-redacted_dot_app" src="https://github.com/user-attachments/assets/7ac6a7cb-b3d3-4262-b27a-c86a8e5e27fa" />
 
 <div align="center">
 
