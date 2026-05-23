@@ -131,6 +131,10 @@ Following the same, structured bug hunting workflow allows me to adapt it to any
 
 ---
 
+## Screenshots of Tools
+
+<img width="861" height="477" alt="Screenshot 2026-05-20 112503-redacted_dot_app" src="https://github.com/user-attachments/assets/aa38696b-e143-4cf2-9fae-b30e0ce73e8b" />
+
 <div align="center">
 
 [![HackerOne](https://img.shields.io/badge/Platform-HackerOne-ef4444?style=flat-square)](https://hackerone.com)
