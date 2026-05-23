@@ -4,8 +4,6 @@
 
 ![Platform](https://img.shields.io/badge/Platform-Kali%20Linux-blueviolet?style=flat-square&logo=kalilinux)
 ![Stack](https://img.shields.io/badge/Stack-VPS%20%2B%20TigerVNC%20%2B%20Caido-informational?style=flat-square)
-![Phase](https://img.shields.io/badge/Completed-Phase%201%3A%20Environment%20Setup-success?style=flat-square)
-![Status](https://img.shields.io/badge/Status-In%20Progress-yellow?style=flat-square)
 
 ---
 
