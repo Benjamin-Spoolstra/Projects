@@ -89,11 +89,11 @@ Key controls applied:
 
 My engagements follow a three-phase approach:
 
-**Phase 1 — Passive Recon** This phase runs entirely against third-party databases (certificate transparency logs, Wayback Machine, Shodan, GitHub) with zero traffic sent to the target. Subdomain discovery, historical URL collection, DNS infrastructure mapping, and cloud storage enumeration all happen here. The output is a complete attack surface map before the target has seen a single request.
+**Phase 1 — Passive Recon** runs entirely against third-party databases (certificate transparency logs, Wayback Machine, Shodan, GitHub) with zero traffic sent to the target. Subdomain discovery, historical URL collection, DNS infrastructure mapping, and cloud storage enumeration all happen here. The output is a complete attack surface map before the target has seen a single request.
 
-**Phase 2 — Active Enumeration** This phase is where controlled traffic begins. DNS resolution, HTTP probing, live crawling with Katana, JavaScript analysis, response header inspection, and Nuclei template checks all run here at a strict 5 req/s. Every tool command includes a rate limit flag and an identifying User-Agent string so security teams can recognize the traffic.
+**Phase 2 — Active Enumeration** is where controlled traffic begins. DNS resolution, HTTP probing, live crawling with Katana, JavaScript analysis, response header inspection, and Nuclei template checks all run here at a strict 5 req/s. Every tool command includes a rate limit flag and an identifying User-Agent string so security teams can recognize the traffic.
 
-**Phase 3 — Manual Testing** This phase uses Caido to test the most interesting endpoints identified during enumeration. Vulnerability coverage includes XSS, IDOR, SSRF, open redirects, CORS misconfigurations, authentication logic flaws, SQL injection (error-based detection), GraphQL enumeration, and HTTP verb tampering.
+**Phase 3 — Manual Testing** uses Caido to test the most interesting endpoints identified during enumeration. Vulnerability coverage includes XSS, IDOR, SSRF, open redirects, CORS misconfigurations, authentication logic flaws, SQL injection (error-based detection), GraphQL enumeration, and HTTP verb tampering.
 
 Each engagement runs inside an auto-initialized workspace (`new-engagement.sh`) that creates a consistent directory structure, a pre-structured engagement log, and a named tmux session with dedicated windows for recon, testing, monitoring, and shell access. This persistent setup allows me to seamlessly move between phases keeping track of interesting findings. Documentation is also much easier when I take step by step notes to refer to later.
 
