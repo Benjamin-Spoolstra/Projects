@@ -8,7 +8,7 @@
 ---
 ### Ethical and Legal Disclaimer
 > [!IMPORTANT]
-> The following project covers tools and methodologies that are for authorized, ethical hacking engagements ONLY. I do not condone the usage of such tools and methods for malicious or unethical purposes. Follow ALL applicable international and local laws accordingly. I am not liable for any damage done wholly or in part from the information provided in this project writeup. The below information is for educational purposes only.  
+> The following project covers tools and methodologies that are for authorized, ethical hacking engagements ONLY. I do NOT condone the usage of such tools and methods for malicious or unethical purposes. Follow ALL applicable international and local laws accordingly. I am not liable for any damage done wholly or in part from the information covered in this project writeup. The below information is for educational purposes only.  
 
 ## Table of Contents
 
