@@ -177,4 +177,4 @@ The Framework tab showing Credential Access with 147 events, T1110.001 (Password
 
 > <img width="1918" height="857" alt="wazuh_custom_dashboard" src="https://github.com/user-attachments/assets/c5dd4300-f0c1-4b2e-8187-c7b8c09fb59b" />
 
-A custom Wazuh Dashboard built on the `wazuh-alerts-*` index showing alert volume by rule description split by source IP (`10.0.3.4` = the attacker). The alert categories include vsftpd login failures, PAM multiple failed logins, vsftpd FTP brute force, and vsftpd multiple FTP connection attempts — all generated during the Hydra session.
+A custom Wazuh Dashboard built on the `wazuh-alerts-*` index showing alert volume by rule description split by source IP (`10.0.3.4` = the attacker). The alert categories include vsftpd login failures, PAM multiple failed logins, vsftpd FTP brute force, and vsftpd multiple FTP connection attempts which are all generated during the Hydra session.
