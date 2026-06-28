@@ -48,17 +48,16 @@ The project was designed around a realistic attack-and-detect scenario. A dedica
 
 ## Infrastructure & Automation
 
-All infrastructure was provisioned using Terraform with a modular layout — a root module calling separate child modules for networking, the SIEM, the attacker, and the victim. Each VM receives its full software configuration automatically at first boot via cloud-init, meaning `terraform apply` produces a fully operational three-VM SOC environment with zero manual server configuration.
+All infrastructure was provisioned using Terraform with a modular layout. A root module calls separate child modules for networking, the SIEM, the attacker, and the victim. Each VM receives its full software configuration automatically at first boot via cloud-init, meaning a fully operational three-VM SOC environment is created with zero manual server configuration.
 
 Key design decisions:
 
-- **Network segmentation** — three dedicated Azure subnets (SOC / attacker / victim) each with their own Network Security Group enforcing least-privilege traffic rules. Attack traffic flows only from the attacker subnet to the victim subnet; Wazuh agent traffic flows from both agent VMs inward to the SOC subnet only
-- **Static private IP for SIEM** — the SIEM is pinned to `10.0.1.4` so both agent cloud-init scripts can reference a known address at boot time, eliminating any dependency on Terraform output values
+- **Network segmentation** — three dedicated Azure subnets (SOC / attacker / victim) each with their own Network Security Group (NSG) enforcing least-privilege traffic rules. Attack traffic flows only from the attacker subnet to the victim subnet and cannot go elsewhere. Wazuh agent traffic flows from both agent VMs inward to the SOC subnet only so that activity can be monitored. 
+- **Static private IP for SIEM** — the SIEM is pinned a private `10.0.0.0/24` address so both agent cloud-init scripts can reference a known address at boot time, eliminating any dependency on Terraform output values
 - **NSG home IP restriction** — SSH access and Wazuh Dashboard access (HTTPS port 443) are restricted to a single source IP, preventing the management interfaces from being exposed to the public internet
-- **cloud-init automation** — the SIEM cloud-init runs the Wazuh 4.14 all-in-one quickstart script; the attacker cloud-init installs Hydra, Nmap, and the Wazuh agent; the victim cloud-init installs vsftpd with intentionally weak credentials, enables SSH password authentication, and enrolls the Wazuh agent
-- **Auto-shutdown schedules** — all three VMs are configured via `azurerm_dev_test_global_vm_shutdown_schedule` to shut down nightly at 2 AM UTC, eliminating idle compute costs without requiring manual intervention
+- **cloud-init automation** — the SIEM cloud-init runs the Wazuh 4.14 all-in-one quickstart script which ensures all agents and logs are set up correctly the first time. The attacker cloud-init installs Hydra, Nmap, and the Wazuh agent, and the victim cloud-init installs vsftpd with intentionally weak credentials, enables SSH password authentication, and enrolls the Wazuh agent.
 
-**Wazuh Dashboard** is accessed through HTTPS on port 443 directly from the Windows 11 workstation. The stack uses Wazuh's bundled OpenSearch-based indexer and OpenSearch Dashboards-based frontend rather than a standalone ELK deployment — all three components are installed by the Wazuh quickstart installer in a single automated step.
+**Wazuh Dashboard** is accessed through HTTPS on port 443 directly from the local workstation. The stack uses Wazuh's bundled OpenSearch-based indexer and OpenSearch Dashboards-based frontend rather than a standalone ELK deployment. All three components are installed by the Wazuh quickstart installer in a single automated step at the beginning.
 
 ---
 
@@ -82,11 +81,11 @@ Key design decisions:
 
 The lab runs in three sequential phases that mirror a real-world attack-and-detect workflow:
 
-**Phase 1 — Infrastructure Deployment** provisions the full environment from a single `terraform apply` command. Terraform creates the resource group, virtual network, three subnets, NSGs, public IPs, and all three VMs in the correct dependency order. cloud-init handles the rest — Wazuh installs on the SIEM, attack tools install on the attacker, and vsftpd with a weak credential set installs on the victim. After approximately 20 minutes of automated first-boot configuration, the Wazuh Dashboard is accessible and both agents appear as active.
+**Phase 1 — Infrastructure Deployment** provisions the full environment from a single Terraform deployment operation. It creates the resource group, virtual network, three subnets, NSGs, public IPs, and all three VMs in the correct dependency order. The `cloud-init` module handles the Wazuh installation on the SIEM VM, attack tools installation on the attacker VM, and the vsftpd configuration with a weak credential set on the victim. After approximately 20 minutes of automated first-boot configuration, the Wazuh Dashboard is accessible and both agents appear as active.
 
-**Phase 2 — Attack Simulation** runs entirely from the attacker VM. An Nmap service version scan maps the victim's open ports and identifies the running services (vsftpd on port 21, OpenSSH on port 22). Hydra then executes a dictionary attack against the FTP service using a targeted slice of rockyou.txt, generating a sustained stream of authentication failures before finding the correct credential. Because the attacker VM also runs a Wazuh agent, process execution telemetry from the attack tools is captured alongside the victim's authentication failure logs — giving the SIEM dual-perspective visibility into the same event.
+**Phase 2 — Attack Simulation** runs entirely from the attacker VM. An Nmap service version scan maps the victim's open ports and identifies the running services (vsftpd on port 21, OpenSSH on port 22). Hydra then executes a dictionary attack against the FTP service using the rockyou.txt wordlist, generating a sustained stream of authentication failures before finding the correct credential. Because the attacker VM also runs a Wazuh agent, process execution telemetry from the attack tools is captured alongside the victim's authentication failure logs, which gives the SIEM dual-perspective visibility into the same event.
 
-**Phase 3 — Detection & Investigation** is conducted from the Wazuh Dashboard on the Windows 11 workstation. Custom XML detection rules (rule IDs 100001–100003) fire on the authentication failure patterns and escalate them to severity level 12 with MITRE ATT&CK technique tags (T1046, T1110, T1110.001, T1110.003). The events view shows the full alert timeline, the MITRE ATT&CK Framework view maps the techniques to their tactics, and a custom dashboard built on the `wazuh-alerts-*` index visualizes alert volume by rule description and source IP over time.
+**Phase 3 — Detection & Investigation** is conducted from the Wazuh Dashboard on the local workstation. Custom XML detection rules (rule IDs 100001–100003) fire on the authentication failure patterns and escalate them to severity level 12 with MITRE ATT&CK technique tags (T1046, T1110, T1110.001, T1110.003). The events view shows the full alert timeline, the MITRE ATT&CK Framework view maps the techniques to their tactics, and a custom dashboard built on the `wazuh-alerts-*` index visualizes alert volume by rule description and source IP over time.
 
 ```mermaid
 flowchart TD
