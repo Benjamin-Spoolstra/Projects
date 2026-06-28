@@ -119,7 +119,7 @@ flowchart TD
 
 ### Wazuh Dashboard — Home
 
-> *[SCREENSHOT: Wazuh_home.png]*
+<img width="1917" height="862" alt="Wazuh_home" src="https://github.com/user-attachments/assets/975e5d2f-ff2b-4c55-acd5-464dfa58f1b4" />
 
 Both Wazuh agents — `attacker-vm` and `victim-vm` — showing as active, with 1 high severity alert, 502 medium severity alerts, and 1,675 low severity alerts generated during the attack simulation window.
 
