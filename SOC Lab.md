@@ -145,7 +145,7 @@ Hydra targeting `ftp://10.0.2.4` with user `ftpuser` and a 201-entry wordlist sl
 
 > <img width="1918" height="867" alt="Wazuh_default_dashboard" src="https://github.com/user-attachments/assets/78c58a5f-5a53-4569-8a06-8786d115d807" />
 
-The Threat Hunting dashboard filtered to `agent.name: victim-vm`, `rule.level: 12 to 14`, showing 1 level-12 alert generated during the attack window. The Top 10 MITRE ATT&CKs donut chart shows Brute Force and Valid Accounts as the triggered technique categories.
+The Threat Hunting dashboard filtered to `agent.name: victim-vm`, `rule.level: 12 to 14`, showing 1 level-12 alert generated during the attack window. The Top 10 MITRE ATT&CKs pie chart shows Brute Force and Valid Accounts as the triggered technique categories.
 
 ---
 
@@ -153,7 +153,7 @@ The Threat Hunting dashboard filtered to `agent.name: victim-vm`, `rule.level: 1
 
 > <img width="1918" height="870" alt="wazuh_events_view" src="https://github.com/user-attachments/assets/320d7b29-d98a-4193-9d7f-01698d6b599f" />
 
-The MITRE ATT&CK events view filtered to the attack timeframe showing 147 hits. Visible alert types include rule 40112 (multiple authentication failures followed by success, T1078 + T1110, level 12), rule 11452 (vsftpd multiple FTP connection attempts, T1110, level 10), and rule 5503 (PAM user login failed, T1110.001, level 5) — all sourced from `victim-vm`.
+The MITRE ATT&CK events view filtered to the attack timeframe showing 147 hits. The alert types include rule 40112 (multiple authentication failures followed by success, T1078 + T1110, level 12), rule 11452 (vsftpd multiple FTP connection attempts, T1110, level 10), and rule 5503 (PAM user login failed, T1110.001, level 5). All of these are sourced from `victim-vm`.
 
 ---
 
@@ -161,7 +161,7 @@ The MITRE ATT&CK events view filtered to the attack timeframe showing 147 hits. 
 
 > <img width="1918" height="870" alt="Wazuh_mitre_attack_dashboard" src="https://github.com/user-attachments/assets/9f9037d9-4cda-4047-b5e3-8c0f8fc678ac" />
 
-The MITRE ATT&CK Dashboard showing the full attack session across four panels: alert evolution over time (spike at 21:35 during the Hydra run), attacks by technique (Credential Access dominant), top tactics by agent, and MITRE techniques broken out per agent — all attributed to `victim-vm`.
+The MITRE ATT&CK Dashboard shows the full attack session across four panels: alert evolution over time (spike at 21:35 during the Hydra run), attacks by technique (Credential Access dominant), top tactics by agent, and MITRE techniques broken out per agent. All of these are attributed to `victim-vm`.
 
 ---
 
@@ -177,4 +177,4 @@ The Framework tab showing Credential Access with 147 events, T1110.001 (Password
 
 > <img width="1918" height="857" alt="wazuh_custom_dashboard" src="https://github.com/user-attachments/assets/c5dd4300-f0c1-4b2e-8187-c7b8c09fb59b" />
 
-A custom Wazuh Dashboard built on the `wazuh-alerts-*` index showing alert volume by rule description split by source IP (`10.0.3.4` — the attacker). Visible alert categories include vsftpd login failures, PAM multiple failed logins, vsftpd FTP brute force, and vsftpd multiple FTP connection attempts — all generated during the Hydra session.
+A custom Wazuh Dashboard built on the `wazuh-alerts-*` index showing alert volume by rule description split by source IP (`10.0.3.4` — the attacker). The alert categories include vsftpd login failures, PAM multiple failed logins, vsftpd FTP brute force, and vsftpd multiple FTP connection attempts — all generated during the Hydra session.
