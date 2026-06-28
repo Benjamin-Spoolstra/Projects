@@ -117,19 +117,11 @@ flowchart TD
 
 ## Screenshots
 
-### Wazuh Dashboard — Home
+### Phase 1 — Infrastructure Deployment
 
 <img width="1917" height="862" alt="Wazuh_home" src="https://github.com/user-attachments/assets/975e5d2f-ff2b-4c55-acd5-464dfa58f1b4" />
 
-Both Wazuh agents — `attacker-vm` and `victim-vm` — showing as active, with 1 high severity alert, 502 medium severity alerts, and 1,675 low severity alerts generated during the attack simulation window.
-
----
-
-### Phase 1 — Infrastructure Deployment
-
-The Wazuh home screen confirms that both agents enrolled successfully after `terraform apply` completed and cloud-init finished running on all three VMs. The Agents Summary ring shows Active (2) / Disconnected (0).
-
-> *[SCREENSHOT: Wazuh_home.png]*
+Both Wazuh agents — `attacker-vm` and `victim-vm` — showing as active, with 1 high severity alert, 502 medium severity alerts, and 1,675 low severity alerts generated during the attack simulation window. The Wazuh home screen confirms that both agents enrolled successfully after `terraform apply` completed and cloud-init finished running on all three VMs. The Agents Summary ring shows Active (2) / Disconnected (0).
 
 ---
 
