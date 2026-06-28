@@ -121,13 +121,15 @@ flowchart TD
 
 <img width="1917" height="862" alt="Wazuh_home" src="https://github.com/user-attachments/assets/975e5d2f-ff2b-4c55-acd5-464dfa58f1b4" />
 
-Both Wazuh agents — `attacker-vm` and `victim-vm` — showing as active, with 1 high severity alert, 502 medium severity alerts, and 1,675 low severity alerts generated during the attack simulation window. The Wazuh home screen confirms that both agents enrolled successfully after `terraform apply` completed and cloud-init finished running on all three VMs. The Agents Summary ring shows Active (2) / Disconnected (0).
+Both Wazuh agents — `attacker-vm` and `victim-vm` — showing as active, with 1 high severity alert, 502 medium severity alerts, and 1,675 low severity alerts generated during the attack simulation window. 
+
+The Wazuh home screen confirms that both agents enrolled successfully after `terraform apply` completed and cloud-init finished running on all three VMs. The Agents Summary ring shows Active (2) / Disconnected (0).
 
 ---
 
 ### Phase 2 — Attack Simulation: Nmap Service Scan (T1046)
 
-> *[SCREENSHOT: Nmap_scan.png]*
+> <img width="1918" height="988" alt="Nmap_scan" src="https://github.com/user-attachments/assets/9387556b-4c0b-4383-957c-7e49fceb57a4" />
 
 Two Nmap commands run against the victim (`10.0.2.4`): a service version scan (`-sV -T4`) identifying vsftpd 3.0.5 on port 21 and OpenSSH 8.9p1 on port 22, followed by a full port scan (`-p-`) confirming only those two ports are open across all 65535.
 
@@ -135,7 +137,7 @@ Two Nmap commands run against the victim (`10.0.2.4`): a service version scan (`
 
 ### Phase 2 — Attack Simulation: Hydra FTP Brute Force (T1110)
 
-> *[SCREENSHOT: Hydra_brute_force.png]*
+> <img width="1918" height="988" alt="Hydra_brute_force" src="https://github.com/user-attachments/assets/c607db81-8560-4127-b3d1-dbe433ca302e" />
 
 Hydra targeting `ftp://10.0.2.4` with user `ftpuser` and a 201-entry wordlist slice from rockyou.txt. The successful credential hit (`ftpuser:Password123`) is confirmed at line `[21][ftp] host: 10.0.2.4 login: ftpuser password: Password123`.
 
@@ -143,7 +145,7 @@ Hydra targeting `ftp://10.0.2.4` with user `ftpuser` and a 201-entry wordlist sl
 
 ### Phase 3 — Detection: Wazuh Default Dashboard
 
-> *[SCREENSHOT: Wazuh_default_dashboard.png]*
+> <img width="1918" height="867" alt="Wazuh_default_dashboard" src="https://github.com/user-attachments/assets/78c58a5f-5a53-4569-8a06-8786d115d807" />
 
 The Threat Hunting dashboard filtered to `agent.name: victim-vm`, `rule.level: 12 to 14`, showing 1 level-12 alert generated during the attack window. The Top 10 MITRE ATT&CKs donut chart shows Brute Force and Valid Accounts as the triggered technique categories.
 
@@ -151,7 +153,7 @@ The Threat Hunting dashboard filtered to `agent.name: victim-vm`, `rule.level: 1
 
 ### Phase 3 — Detection: Events View
 
-> *[SCREENSHOT: wazuh_events_view.png]*
+> <img width="1918" height="870" alt="wazuh_events_view" src="https://github.com/user-attachments/assets/320d7b29-d98a-4193-9d7f-01698d6b599f" />
 
 The MITRE ATT&CK events view filtered to the attack timeframe showing 147 hits. Visible alert types include rule 40112 (multiple authentication failures followed by success, T1078 + T1110, level 12), rule 11452 (vsftpd multiple FTP connection attempts, T1110, level 10), and rule 5503 (PAM user login failed, T1110.001, level 5) — all sourced from `victim-vm`.
 
@@ -159,7 +161,7 @@ The MITRE ATT&CK events view filtered to the attack timeframe showing 147 hits. 
 
 ### Phase 3 — Detection: MITRE ATT&CK Dashboard
 
-> *[SCREENSHOT: Wazuh_mitre_attack_dashboard.png]*
+> <img width="1918" height="870" alt="Wazuh_mitre_attack_dashboard" src="https://github.com/user-attachments/assets/9f9037d9-4cda-4047-b5e3-8c0f8fc678ac" />
 
 The MITRE ATT&CK Dashboard showing the full attack session across four panels: alert evolution over time (spike at 21:35 during the Hydra run), attacks by technique (Credential Access dominant), top tactics by agent, and MITRE techniques broken out per agent — all attributed to `victim-vm`.
 
@@ -167,7 +169,7 @@ The MITRE ATT&CK Dashboard showing the full attack session across four panels: a
 
 ### Phase 3 — Detection: MITRE ATT&CK Framework — T1110.001 Drill-Down
 
-> *[SCREENSHOT: wazuh_mitre_attack_ttps.png]*
+> <img width="1918" height="865" alt="wazuh_mitre_attack_ttps" src="https://github.com/user-attachments/assets/7f272875-7c24-4492-950a-441f1c8915a7" />
 
 The Framework tab showing Credential Access with 147 events, T1110.001 (Password Guessing) as the primary technique with 112 hits. The event table confirms individual events mapped to `victim-vm` agent with rule ID 5503 (PAM: User login failed) at level 5.
 
@@ -175,6 +177,6 @@ The Framework tab showing Credential Access with 147 events, T1110.001 (Password
 
 ### Phase 3 — Detection: Custom Dashboard
 
-> *[SCREENSHOT: wazuh_custom_dashboard.png]*
+> <img width="1918" height="857" alt="wazuh_custom_dashboard" src="https://github.com/user-attachments/assets/c5dd4300-f0c1-4b2e-8187-c7b8c09fb59b" />
 
 A custom Wazuh Dashboard built on the `wazuh-alerts-*` index showing alert volume by rule description split by source IP (`10.0.3.4` — the attacker). Visible alert categories include vsftpd login failures, PAM multiple failed logins, vsftpd FTP brute force, and vsftpd multiple FTP connection attempts — all generated during the Hydra session.
