@@ -46,7 +46,7 @@ Before I setup my VPS for vulnerability testing I hardened it according to secur
 
 Key controls applied:
 
-- **SSH** — key-only authentication (ed25519 elliptical curve cryptography) with root login disabled and idle timeout enforced
+- **SSH** — key-only authentication (ed25519 elliptic curve cryptography) with root login disabled and idle timeout enforced
 - **Firewall** — UFW with default-deny inbound; only strictly necessary ports are left open
 - **Fail2ban + PAM lockout** — brute-force protection at the network and OS level
 - **Service cleanup** — stopped and disabled unnecessary desktop services like `polkit`, `accounts-daemon`, and `colord`
@@ -104,9 +104,9 @@ Each engagement runs inside an auto-initialized workspace (`new-engagement.sh`) 
 
 ## Skills Gained
 
-**Infrastructure & hardening** — This project exposed me to Linux server hardening best practices such as SSH connection managemetn, host-based firewalling, kernel parameter tuning via sysctl, PAM authentication layering, and systematic service enumeration. The process of filtering out unnecessary services and components taught me a practical way to examine and secure digital assets.
+**Infrastructure & hardening** — This project exposed me to Linux server hardening best practices such as SSH connection management, host-based firewalling, kernel parameter tuning via sysctl, PAM authentication layering, and systematic service enumeration. The process of filtering out unnecessary services and components taught me a practical way to examine and secure digital assets.
 
-**Recon toolchain** — Developing my own testing methodology showed me a practical way to divide up the work performed during real bug bounty hunting. I learned the primary differences between passive and active target reconnaissance, and that there are times for both types of testing. I developed a structured pipeline that converts wide attack surfaces into meanginful targets that have the highest chance of exposing vulnerabilities. 
+**Recon toolchain** — Developing my own testing methodology showed me a practical way to divide up the work performed during real bug bounty hunting. I learned the primary differences between passive and active target reconnaissance, and that there are times for both types of testing. I developed a structured pipeline that converts wide attack surfaces into meaningful targets that have the highest chance of exposing vulnerabilities. 
 
 The pipeline is:
 
