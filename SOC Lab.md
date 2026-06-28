@@ -27,7 +27,7 @@
 
 I wanted to build a hands-on SOC environment to develop practical blue team skills beyond what certifications and theory alone can offer. Rather than using a local VM setup, I deployed this lab entirely in Microsoft Azure to gain real experience working with cloud infrastructure while simultaneously learning SIEM administration and detection engineering.
 
-The project was designed around a realistic attack-and-detect scenario: a dedicated attacker machine runs live credential attacks and network reconnaissance against an intentionally misconfigured target, while a central SIEM ingests logs from both machines and surfaces the activity as mapped alerts. Every component was deployed through Infrastructure as Code so the environment is fully reproducible, teardown is instantaneous, and the code itself doubles as a portfolio artifact demonstrating IaC skills alongside the security work.
+The project was designed around a realistic attack-and-detect scenario. A dedicated attacker machine runs live credential attacks and network reconnaissance against an intentionally misconfigured target, while a central SIEM ingests logs from both machines and surfaces the activity as mapped alerts. Every component was deployed through Infrastructure as Code (IaC) so the environment is fully standardized, reproducible, and predictable.
 
 ---
 
@@ -35,9 +35,8 @@ The project was designed around a realistic attack-and-detect scenario: a dedica
 
 | Component | Details |
 |-----------|---------|
-| **Cloud** | Microsoft Azure — East US region |
-| **Local OS** | Windows 11 |
-| **IaC** | Terraform (azurerm provider ~> 4.0) |
+| **Cloud** | Microsoft Azure |
+| **IaC** | Terraform (azurerm provider0 v4.0) |
 | **SIEM** | Wazuh 4.14 (Manager + Indexer + Dashboard) |
 | **SIEM Server** | Ubuntu 22.04 LTS — Standard_D4s_v3 (4 vCPU / 16 GB RAM) |
 | **Attacker VM** | Ubuntu 22.04 LTS — Standard_D2s_v3 (2 vCPU / 8 GB RAM) |
