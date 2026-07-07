@@ -9,7 +9,7 @@
 
 ### Ethical and Legal Disclaimer
 > [!IMPORTANT]
-> The following project covers tools and methodologies that are for authorized, ethical use in controlled lab environments ONLY. I do NOT condone the usage of such tools and methods for malicious or unethical purposes. Follow ALL applicable international and local laws accordingly. I am not liable for any damage done fully or in part from the information covered in this project writeup. The below information is for educational purposes only. All attack simulations were conducted exclusively against infrastructure I own and control.
+> The following project covers tools and methodologies that are for authorized, ethical use in controlled lab environments only. I do not condone the usage of such tools and methods for malicious or unethical purposes. Follow all applicable international and local laws accordingly. I am not liable for any damage done fully or in part from the information covered in this project writeup. The below information is for educational purposes only. All attack simulations were conducted exclusively against infrastructure I own and control.
 
 ## Table of Contents
 
