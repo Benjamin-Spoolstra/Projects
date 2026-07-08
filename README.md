@@ -23,4 +23,6 @@ This is a cloud-based GRC lab simulating the full NIST Risk Management Framework
 
 ---
 
-*All projects were conducted exclusively against infrastructure I own and control, in accordance with applicable laws, for educational purposes.*
+### Disclaimer
+
+These writeups are for educational purposes only. Do not use any techniques here on systems you do not own or have explicit permission to test.
