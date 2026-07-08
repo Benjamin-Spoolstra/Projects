@@ -1,7 +1,6 @@
 # Projects
 
 This repository is a collection of my hands-on cybersecurity home lab projects covering offensive security, defensive/blue team operations, and governance, risk, and compliance (GRC). Each project was built from scratch, documented in detail, and includes methodology, tooling, and screenshots.
----
 
 ### [Bug Bounty VPS](https://github.com/Benjamin-Spoolstra/Projects/blob/main/Bug%20Bounty%20VPS.md)
 This is a hardened Kali Linux VPS built as a dedicated remote platform for bug bounty hunting and penetration testing. It covers OS hardening, a structured three-phase recon-to-exploitation methodology (passive recon → active enumeration → manual testing), and a full offensive security toolchain (Subfinder, Amass, httpx, Nuclei, Caido, and more).
