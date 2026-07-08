@@ -31,7 +31,7 @@ I wanted to create a dedicated Linux server for my bug hunting and penetration t
 
 | Component | Details |
 |-----------|---------|
-| **VPS** | Hostinger KVM VPS 2 — Kali Linux |
+| **VPS** | Hostinger KVM VPS 2 - Kali Linux |
 | **Local OS** | Windows 11 |
 | **Proxy** | Caido |
 | **GUI Access** | TigerVNC via SSH tunnel |
@@ -46,13 +46,13 @@ Before I setup my VPS for vulnerability testing I hardened it according to secur
 
 Key controls applied:
 
-- **SSH** — key-only authentication (ed25519 elliptic curve cryptography) with root login disabled and idle timeout enforced
-- **Firewall** — UFW with default-deny inbound; only strictly necessary ports are left open
-- **Fail2ban + PAM lockout** — brute-force protection at the network and OS level
-- **Service cleanup** — stopped and disabled unnecessary desktop services like `polkit`, `accounts-daemon`, and `colord`
-- **Kernel hardening** — ASLR, ptrace restrictions, SYN flood protection, IP forwarding disabled, kernel pointer exposure restricted
-- **Filesystem** — `/tmp` and `/dev/shm` mounted `noexec`; restrictive umask; home directory permissions tightened
-- **IPv6 disabled** — not needed for my case; removes an entire network stack from the surface
+- **SSH** - key-only authentication (ed25519 elliptic curve cryptography) with root login disabled and idle timeout enforced
+- **Firewall** - UFW with default-deny inbound; only strictly necessary ports are left open
+- **Fail2ban + PAM lockout** - brute-force protection at the network and OS level
+- **Service cleanup** - stopped and disabled unnecessary desktop services like `polkit`, `accounts-daemon`, and `colord`
+- **Kernel hardening** - ASLR, ptrace restrictions, SYN flood protection, IP forwarding disabled, kernel pointer exposure restricted
+- **Filesystem** - `/tmp` and `/dev/shm` mounted `noexec`; restrictive umask; home directory permissions tightened
+- **IPv6 disabled** - not needed for my case; removes an entire network stack from the surface
 
 **TigerVNC** is used for GUI access when needed and is bound exclusively to `127.0.0.1:5901`. The VNC is connected through an SSH tunnel which encrypts communication and reduces the attack surface with more open ports.
 
@@ -92,11 +92,11 @@ Key controls applied:
 
 My engagements follow a three-phase approach:
 
-**Phase 1 — Passive Recon** runs entirely against third-party databases (certificate transparency logs, Wayback Machine, Shodan, GitHub) with zero traffic sent to the target. Subdomain discovery, historical URL collection, DNS infrastructure mapping, and cloud storage enumeration all happen here. The output is a complete attack surface map before the target has seen a single request.
+**Phase 1 - Passive Recon** runs entirely against third-party databases (certificate transparency logs, Wayback Machine, Shodan, GitHub) with zero traffic sent to the target. Subdomain discovery, historical URL collection, DNS infrastructure mapping, and cloud storage enumeration all happen here. The output is a complete attack surface map before the target has seen a single request.
 
-**Phase 2 — Active Enumeration** is where controlled traffic begins. DNS resolution, HTTP probing, live crawling with Katana, JavaScript analysis, response header inspection, and Nuclei template checks all run here at a strict 5 req/s. Every tool command includes a rate limit flag and an identifying User-Agent string so security teams can recognize the traffic.
+**Phase 2 - Active Enumeration** is where controlled traffic begins. DNS resolution, HTTP probing, live crawling with Katana, JavaScript analysis, response header inspection, and Nuclei template checks all run here at a strict 5 req/s. Every tool command includes a rate limit flag and an identifying User-Agent string so security teams can recognize the traffic.
 
-**Phase 3 — Manual Testing** uses Caido to test the most interesting endpoints identified during enumeration. Vulnerability coverage includes XSS, IDOR, SSRF, open redirects, CORS misconfigurations, authentication logic flaws, SQL injection (error-based detection), GraphQL enumeration, and HTTP verb tampering.
+**Phase 3 - Manual Testing** uses Caido to test the most interesting endpoints identified during enumeration. Vulnerability coverage includes XSS, IDOR, SSRF, open redirects, CORS misconfigurations, authentication logic flaws, SQL injection (error-based detection), GraphQL enumeration, and HTTP verb tampering.
 
 Each engagement runs inside an auto-initialized workspace (`new-engagement.sh`) that creates a consistent directory structure, a pre-structured engagement log, and a named tmux session with dedicated windows for recon, testing, monitoring, and shell access. This persistent setup allows me to seamlessly move between phases and keep track of interesting findings. Documentation becomes much easier when I take step by step notes to refer to later.
 
@@ -104,9 +104,9 @@ Each engagement runs inside an auto-initialized workspace (`new-engagement.sh`) 
 
 ## Skills Gained
 
-**Infrastructure & hardening** — This project exposed me to Linux server hardening best practices such as SSH connection management, host-based firewalling, kernel parameter tuning via sysctl, PAM authentication layering, and systematic service enumeration. The process of filtering out unnecessary services and components taught me a practical way to examine and secure digital assets.
+**Infrastructure & hardening** - This project exposed me to Linux server hardening best practices such as SSH connection management, host-based firewalling, kernel parameter tuning via sysctl, PAM authentication layering, and systematic service enumeration. The process of filtering out unnecessary services and components taught me a practical way to examine and secure digital assets.
 
-**Recon toolchain** — Developing my own testing methodology showed me a practical way to divide up the work performed during real bug bounty hunting. I learned the primary differences between passive and active target reconnaissance, and that there are times for both types of testing. I developed a structured pipeline that converts wide attack surfaces into meaningful targets that have the highest chance of exposing vulnerabilities. 
+**Recon toolchain** - Developing my own testing methodology showed me a practical way to divide up the work performed during real bug bounty hunting. I learned the primary differences between passive and active target reconnaissance, and that there are times for both types of testing. I developed a structured pipeline that converts wide attack surfaces into meaningful targets that have the highest chance of exposing vulnerabilities. 
 
 The pipeline is:
 
@@ -123,9 +123,9 @@ flowchart TD
 
 Following the same, structured bug hunting workflow allows me to adapt it to any unique target or program where it's a bunch of wildcard domains or a single primary domain.
 
-**Secure remote access** — Configuring SSH tunneling for both VNC and local service access (DVWA, gowitness report server) made port forwarding more intuitive to me. No longer is SSH just a key phrase I heard on the Security+ exam. I now see configuring remote connections and managing port forwarding as an essential security skill that not only reduces the attack surface, but efficiently uses the available bandwidth for multiple purposes beyond just command line access.
+**Secure remote access** - Configuring SSH tunneling for both VNC and local service access (DVWA, gowitness report server) made port forwarding more intuitive to me. No longer is SSH just a key phrase I heard on the Security+ exam. I now see configuring remote connections and managing port forwarding as an essential security skill that not only reduces the attack surface, but efficiently uses the available bandwidth for multiple purposes beyond just command line access.
 
-**Methodical documentation** — Building the engagement log system and finding templates helped me streamline my bug hunting workflow and save time in the reporting phase. With my documentation setup I can easily log all meaningful findings and refer back to them as needed without worrying about missing key details or events.
+**Methodical documentation** - Building the engagement log system and finding templates helped me streamline my bug hunting workflow and save time in the reporting phase. With my documentation setup I can easily log all meaningful findings and refer back to them as needed without worrying about missing key details or events.
 
 ---
 
