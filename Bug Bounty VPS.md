@@ -31,7 +31,7 @@ I wanted to create a dedicated Linux server for my bug hunting and penetration t
 
 | Component | Details |
 |-----------|---------|
-| **VPS** | Hostinger KVM VPS 2 - Kali Linux |
+| **VPS** | Kali Linux |
 | **Local OS** | Windows 11 |
 | **Proxy** | Caido |
 | **GUI Access** | TigerVNC via SSH tunnel |
