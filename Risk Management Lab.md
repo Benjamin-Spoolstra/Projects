@@ -61,6 +61,30 @@ Key design decisions:
 
 ---
 
+## Logical Network Diagram
+
+```mermaid
+%%{init: {'theme':'dark','themeVariables':{'primaryColor':'#121c15','primaryTextColor':'#d4f5e2','primaryBorderColor':'#3ef08b','lineColor':'#7a9c88','fontFamily':'monospace','clusterBkg':'#101a13','clusterBorder':'#2f6b48'}}}%%
+flowchart TB
+    Analyst["Analyst / Scanner Workstation<br/>Nessus 10.x · SCC 5.14 · fixed IP"]
+    Internet(("Internet"))
+
+    subgraph VNet["Azure Virtual Network — vnet-rmf"]
+        subgraph SN["AD Subnet — intranet only · NSG"]
+            direction LR
+            DC["DC01 · lab.local<br/>AD DS · DNS<br/>Windows Server 2022 · STIG-hardened"]
+            MS["MS01 · Member Server<br/>domain-joined<br/>Windows Server 2022 · STIG-hardened"]
+        end
+    end
+
+    Analyst -->|"RDP 3389 · vuln + STIG scans (fixed IP only)"| DC
+    Analyst -->|"RDP 3389 · vuln + STIG scans (fixed IP only)"| MS
+    MS <-->|"Kerberos 88 · LDAP 389 · DNS 53 · SMB 445"| DC
+    Internet -. "no internet access (SC-7)" .-> DC
+
+    linkStyle 3 stroke:#ff5b6a,color:#ff5b6a,stroke-dasharray:5 4
+```
+
 ## Toolset
 
 | Tool | Category | Purpose |
