@@ -53,7 +53,7 @@ All infrastructure was provisioned using Terraform with a modular layout. A root
 Key design decisions:
 
 - **Network segmentation** - three dedicated Azure subnets (SOC / attacker / victim) each with their own Network Security Group (NSG) enforcing least-privilege traffic rules. Attack traffic flows only from the attacker subnet to the victim subnet and cannot go elsewhere. Wazuh agent traffic flows from both agent VMs inward to the SOC subnet only so that activity can be monitored. 
-- **Static private IP for SIEM** - the SIEM is pinned a private `10.0.0.0/24` address so both agent cloud-init scripts can reference a known address at boot time, eliminating any dependency on Terraform output values
+- **Static private IP for SIEM** - the SIEM is pinned a private `10.0.1.0/24` address so both agent cloud-init scripts can reference a known address at boot time, eliminating any dependency on Terraform output values
 - **NSG home IP restriction** - SSH access and Wazuh Dashboard access (HTTPS port 443) are restricted to a single source IP, preventing the management interfaces from being exposed to the public internet
 - **cloud-init automation** - the SIEM cloud-init runs the Wazuh 4.14 all-in-one quickstart script which ensures all agents and logs are set up correctly the first time. The attacker cloud-init installs Hydra, Nmap, and the Wazuh agent, and the victim cloud-init installs vsftpd with intentionally weak credentials, enables SSH password authentication, and enrolls the Wazuh agent.
 
