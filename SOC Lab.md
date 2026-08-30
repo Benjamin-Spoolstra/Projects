@@ -50,6 +50,37 @@ The project was designed around a realistic attack-and-detect scenario. A dedica
 
 All infrastructure was provisioned using Terraform with a modular layout. A root module calls separate child modules for networking, the SIEM, the attacker, and the victim. Each VM receives its full software configuration automatically at first boot via cloud-init, meaning a fully operational three-VM SOC environment is created with zero manual server configuration.
 
+## Logical Network Diagram
+
+```mermaid
+%%{init: {'theme':'dark','themeVariables':{'primaryColor':'#121c15','primaryTextColor':'#d4f5e2','primaryBorderColor':'#3ef08b','lineColor':'#7a9c88','fontFamily':'monospace','clusterBkg':'#101a13','clusterBorder':'#2f6b48'}}}%%
+flowchart TB
+    Analyst["Analyst Workstation<br/>(home IP)"]
+    Internet(("Internet"))
+
+    subgraph VNet["Azure Virtual Network"]
+        direction LR
+        subgraph SNA["Attacker Subnet 10.0.3.0/24 + NSG"]
+            ATK["Attacker VM (10.0.3.4)<br/>Nmap + Hydra + Wazuh agent"]
+        end
+        subgraph SNV["Victim Subnet 10.0.2.0/24 + NSG"]
+            VIC["Victim VM (10.0.2.4)<br/>vsftpd:21 + sshd:22 + Wazuh agent"]
+        end
+        subgraph SNS["SOC Subnet 10.0.1.0/24 + NSG"]
+            SIEM["Wazuh SIEM (10.0.1.4)<br/>Manager + Indexer + Dashboard<br/>Inbound: 22, 443, 1514, 1515"]
+        end
+    end
+
+    Analyst -->|"SSH 22 + HTTPS 443 (home IP only)"| SIEM
+    ATK -->|"Nmap + FTP/SSH brute-force"| VIC
+    ATK -->|"agent 1514/1515"| SIEM
+    VIC -->|"agent 1514/1515"| SIEM
+    Internet -. "no inbound (blocked)" .-> VIC
+
+    linkStyle 1 stroke:#ffcf5b,color:#ffcf5b
+    linkStyle 4 stroke:#ff5b6a,color:#ff5b6a,stroke-dasharray:5 4
+```
+
 Key design decisions:
 
 - **Network segmentation** - three dedicated Azure subnets (SOC / attacker / victim) each with their own Network Security Group (NSG) enforcing least-privilege traffic rules. Attack traffic flows only from the attacker subnet to the victim subnet and cannot go elsewhere. Wazuh agent traffic flows from both agent VMs inward to the SOC subnet only so that activity can be monitored. 
