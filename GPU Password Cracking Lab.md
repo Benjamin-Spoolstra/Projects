@@ -26,6 +26,8 @@
 
 Password cracking is a core competency in offensive security and is an area I felt I was weak in. I researched and built this project as a means of learning password cracking practically using hashcat. Another primary goal for this project I had was building an intuition for which hashing algorithms could be cracked efficiently and quickly. Not every hashing algorithm is equal in terms of crackability. MD5 can be brute forced in a matter of hours, but WPA2 could take years. Finally, I was aware that GPUs were better for password cracking, but I didn't know how. This project taught me the value of GPU parallel processing and how limited CPUs can get with repetitive operations.
 
+---
+
 ## Environment
 
 The rig is a single-GPU RunPod pod in the EU-RO-1 (Romania) datacenter, backed by a persistent
@@ -109,6 +111,8 @@ The Secure Cloud was utilized for this pod to ensure the data and processes occu
 Deployed the RunPod PyTorch 2.8.0 pod with an RTX 5090 in EU-RO-1, attaching the pre-created
 50 GB network volume and enabled ssh key authentication for terminal access.
 
+---
+
 ### 2. Verify the GPU and hashcat backend
 
 Confirmed the card and driver were recognized by the pod with the NVIDIA System Management Interface (SMI), and then verified hashcat could see the GPU.
@@ -120,6 +124,8 @@ Confirmed the card and driver were recognized by the pod with the NVIDIA System 
 <img width="1053" height="957" alt="Screenshot 2026-09-08 202516" src="https://github.com/user-attachments/assets/16a8301a-3649-47a2-b0d6-d1232837ab69" />
 
 <figcaption> Confirming GPU recognition with hashcat </figcaption>
+
+---
 
 ### 3. Generate sample hashes from known plaintexts
 
@@ -138,6 +144,8 @@ a small plaintext list of entries commonly found in the `rockyou.txt` wordlist.
 
 <figcaption> NTLM hashed plaintexts </figcaption>
 
+---
+
 ### 4. Crack the fast hashes (MD5 & NTLM)
 
 Ran a dictionary attack with the `rockyou.txt` wordlist using the `best66.rule` against each set. Both recovered 5 of 6
@@ -151,6 +159,8 @@ the rule didn't mutate a base word into it. That single holdout reflects the rea
 <img width="1037" height="661" alt="Screenshot 2026-09-08 212050" src="https://github.com/user-attachments/assets/cb89e81a-390b-410d-8041-1c9f4f579ba2" /><br>
 
 <figcaption> Cracked NTLM Hashes </figcaption>
+
+---
 
 ### 5. Crack a slow hash (WPA2)
 
