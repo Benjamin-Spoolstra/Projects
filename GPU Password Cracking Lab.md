@@ -166,6 +166,8 @@ The result is that 6 out of the 6 passwords were recovered as they were common e
 
 <figcaption> Cracked WPA2 Hashes </figcaption>
 
+---
+
 **Results Summary**
 
 | Hash Type | Mode | Recovered | Observed Speed | Runtime |
