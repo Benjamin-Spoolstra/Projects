@@ -79,7 +79,11 @@ The Secure Cloud was utilized for this pod to ensure the data and processes occu
 
 <img width="715" height="152" alt="Screenshot 2026-09-08 200021" src="https://github.com/user-attachments/assets/9f041a6e-41d2-4880-83cf-45991818f24d" />
 
+<figcaption> Enabling web access to the pod </figcaption>
+
 <img width="1913" height="937" alt="Screenshot 2026-09-08 201125" src="https://github.com/user-attachments/assets/8fc7539a-cb89-440b-bfc0-8ada956e0887" />
+
+<figcaption> Accessing the pod over SSH </figcaption>
 
 ---
 
