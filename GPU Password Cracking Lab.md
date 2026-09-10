@@ -61,9 +61,15 @@ I provisioned a RunPod network volume in the EU-RO-1 region, and then deployed t
 
 <img width="1398" height="781" alt="Screenshot 2026-09-08 195324" src="https://github.com/user-attachments/assets/22b80b57-0d7c-4dab-9e7c-04d14b65a990" />
 
+<figcaption> Creating the network volume storage in the EU-RO-1 Region </figcaption>
+
 <img width="1397" height="782" alt="Screenshot 2026-09-08 195341" src="https://github.com/user-attachments/assets/b3e094f2-e7bc-4382-a338-86503449443a" />
 
+<figcaption> Creating the 50GB network volume storage </figcaption>
+
 <img width="1917" height="797" alt="Screenshot 2026-09-08 195453" src="https://github.com/user-attachments/assets/d8f43bda-480e-47ba-a369-b893e510ff40" />
+
+<figcaption> Creating the 30GB container disk </figcaption>
 
 The RTX 5090 GPU allocated to the pod is a Blackwell card and is perfectly compatible with hashcat v7.1.2 which requires a CUDA of 12.8 or later. This means the GPU can be properly read and leveraged during processing to significantly reduce the cracking time. 
 
