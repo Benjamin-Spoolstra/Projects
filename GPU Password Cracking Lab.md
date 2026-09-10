@@ -126,15 +126,15 @@ Confirmed the card and driver were recognized by the pod with the NVIDIA System 
 To keep the lab self-contained and guarantee crackable targets, I generated all hashes myself from
 a small plaintext list of entries commonly found in the `rockyou.txt` wordlist.
 
-<img width="662" height="227" alt="Screenshot 2026-09-08 205127" src="https://github.com/user-attachments/assets/e28896d2-1f0b-4b51-9ff9-5dfadcbd977a" />
+<img width="662" height="227" alt="Screenshot 2026-09-08 205127" src="https://github.com/user-attachments/assets/e28896d2-1f0b-4b51-9ff9-5dfadcbd977a" /><br>
 
 <figcaption> Plaintext list of passwords to be hashed </figcaption>
 
-<img width="778" height="273" alt="Screenshot 2026-09-08 205626" src="https://github.com/user-attachments/assets/9b52ddfd-64d5-498d-9d98-a000b7c61697" />
+<img width="778" height="273" alt="Screenshot 2026-09-08 205626" src="https://github.com/user-attachments/assets/9b52ddfd-64d5-498d-9d98-a000b7c61697" /><br>
 
 <figcaption> MD5 hashed plaintexts </figcaption>
 
-<img width="632" height="196" alt="Screenshot 2026-09-08 210314" src="https://github.com/user-attachments/assets/ba31a49e-e2bb-4090-b74e-6d676560df60" />
+<img width="632" height="196" alt="Screenshot 2026-09-08 210314" src="https://github.com/user-attachments/assets/ba31a49e-e2bb-4090-b74e-6d676560df60" /><br>
 
 <figcaption> NTLM hashed plaintexts </figcaption>
 
@@ -144,9 +144,13 @@ Ran a dictionary attack with the `rockyou.txt` wordlist using the `best66.rule` 
 passwords instantly, while `Summer2024!` survived, since it isn't in the rockyou wordlist and
 the rule didn't mutate a base word into it. That single holdout reflects the reality that arbitrary passwords are better than guessable ones, which can be found almost immediately.
 
-<img width="986" height="658" alt="Screenshot 2026-09-08 211644" src="https://github.com/user-attachments/assets/ffa7c2a7-2395-4638-a074-b5648053d605" />
+<img width="986" height="658" alt="Screenshot 2026-09-08 211644" src="https://github.com/user-attachments/assets/ffa7c2a7-2395-4638-a074-b5648053d605" /><br>
 
-<img width="1037" height="661" alt="Screenshot 2026-09-08 212050" src="https://github.com/user-attachments/assets/cb89e81a-390b-410d-8041-1c9f4f579ba2" />
+<figcaption> Cracked MD5 Hashes </figcaption>
+
+<img width="1037" height="661" alt="Screenshot 2026-09-08 212050" src="https://github.com/user-attachments/assets/cb89e81a-390b-410d-8041-1c9f4f579ba2" /><br>
+
+<figcaption> Cracked NTLM Hashes </figcaption>
 
 ### 5. Crack a slow hash (WPA2)
 
