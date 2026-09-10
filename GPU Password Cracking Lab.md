@@ -128,9 +128,15 @@ a small plaintext list of entries commonly found in the `rockyou.txt` wordlist.
 
 <img width="662" height="227" alt="Screenshot 2026-09-08 205127" src="https://github.com/user-attachments/assets/e28896d2-1f0b-4b51-9ff9-5dfadcbd977a" />
 
+<figcaption> Plaintext list of passwords to be hashed </figcaption>
+
 <img width="778" height="273" alt="Screenshot 2026-09-08 205626" src="https://github.com/user-attachments/assets/9b52ddfd-64d5-498d-9d98-a000b7c61697" />
 
+<figcaption> MD5 hashed plaintexts </figcaption>
+
 <img width="632" height="196" alt="Screenshot 2026-09-08 210314" src="https://github.com/user-attachments/assets/ba31a49e-e2bb-4090-b74e-6d676560df60" />
+
+<figcaption> NTLM hashed plaintexts </figcaption>
 
 ### 4. Crack the fast hashes (MD5 & NTLM)
 
