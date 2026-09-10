@@ -77,8 +77,7 @@ The RTX 5090 GPU allocated to the pod is a Blackwell card and is perfectly compa
 
 The Secure Cloud was utilized for this pod to ensure the data and processes occurring stay private to the creator and no other users. Teardown involves secure deallocation and termination of any pod instances such that all sensitive data is removed upon process completion. Access is provisioned via SSH key authentication so no brute forcing is possible.
 
-<img width="715" height="152" alt="Screenshot 2026-09-08 200021" src="https://github.com/user-attachments/assets/9f041a6e-41d2-4880-83cf-45991818f24d" />
-
+<img width="715" height="152" alt="Screenshot 2026-09-08 200021" src="https://github.com/user-attachments/assets/9f041a6e-41d2-4880-83cf-45991818f24d" />\
 
 <figcaption> Enabling web access to the pod </figcaption>
 
