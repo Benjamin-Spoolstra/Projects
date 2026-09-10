@@ -131,6 +131,7 @@ The result is that 6 out of the 6 passwords were recovered as they were common e
 <img width="747" height="242" alt="Screenshot 2026-09-08 212209" src="https://github.com/user-attachments/assets/b802a997-ccd1-46a0-9039-bb5e6e6ed1e9" />
 
 <img width="990" height="677" alt="Screenshot 2026-09-08 212448" src="https://github.com/user-attachments/assets/8948fb59-1475-462b-b8a1-2f6005b4f9c0" />
+
 **Results Summary**
 
 | Hash Type | Mode | Recovered | Observed Speed | Runtime |
