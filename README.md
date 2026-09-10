@@ -23,6 +23,14 @@ This is a cloud-based GRC lab simulating the full NIST Risk Management Framework
 
 ---
 
+### [GPU Password Cracking Lab](https://github.com/Benjamin-Spoolstra/Projects/blob/main/GPU%20Password%20Cracking%20Lab.md)
+
+This is a cloud cracking rig built on a RunPod NVIDIA RTX 5090 (Blackwell) GPU to run hashcat against self-generated MD5, NTLM, and WPA2 hashes. It covers GPU provisioning, CUDA backend verification, offline hash generation, and dictionary cracking attacks that demonstrate the limitations of hash cracking when using arbitrary passwords over guessable ones.
+
+**Skills:** Cloud GPU provisioning, hashcat fluency, hash generation, password strength analysis
+
+---
+
 # Disclaimer
 
 These writeups are for **educational purposes only**. Do not use any techniques here on systems you do not own or have explicit permission to test.
