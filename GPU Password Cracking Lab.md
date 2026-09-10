@@ -49,7 +49,6 @@ network volume so tooling and results survive pod restarts.
 
 <img width="1917" height="812" alt="Screenshot 2026-09-08 195417" src="https://github.com/user-attachments/assets/b3536483-ee43-44ee-9862-6c98b01e96a7" />
 
-
 ---
 
 ## Hardening & Infrastructure
@@ -122,6 +121,7 @@ the rule didn't mutate a base word into it. That single holdout reflects the rea
 <img width="986" height="658" alt="Screenshot 2026-09-08 211644" src="https://github.com/user-attachments/assets/ffa7c2a7-2395-4638-a074-b5648053d605" />
 
 <img width="1037" height="661" alt="Screenshot 2026-09-08 212050" src="https://github.com/user-attachments/assets/cb89e81a-390b-410d-8041-1c9f4f579ba2" />
+
 ### 5. Crack a slow hash (WPA2)
 
 WPA2 is more complex than MD5 and NTLM because it's tied to both a network identity and passphrase, so I configured an example network identity for this lab to test the hashes against.
