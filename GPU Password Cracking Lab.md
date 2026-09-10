@@ -46,8 +46,10 @@ network volume so tooling and results survive pod restarts.
 | Cracking tool | hashcat v7.1.2 (built from source) |
 
 <img width="1917" height="807" alt="Screenshot 2026-09-08 195236" src="https://github.com/user-attachments/assets/d88893a0-6114-44f5-8f88-d4f1b942b0b2" />
+<em>Selecting the RunPod Pytorth 2.8.0 Template</em>
 
 <img width="1917" height="812" alt="Screenshot 2026-09-08 195417" src="https://github.com/user-attachments/assets/b3536483-ee43-44ee-9862-6c98b01e96a7" />
+<em>Selecting the RTX 5090 GPU</em>
 
 ---
 
