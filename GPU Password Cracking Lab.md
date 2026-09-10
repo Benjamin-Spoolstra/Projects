@@ -115,6 +115,8 @@ Confirmed the card and driver were recognized by the pod with the NVIDIA System 
 
 <img width="1110" height="436" alt="Screenshot 2026-09-08 201648" src="https://github.com/user-attachments/assets/e32d5384-90d3-46ab-8832-65d265a4bc7f" />
 
+<figcaption> Verifying GPU health with NVIDIA SMI </figcaption>
+
 <img width="1053" height="957" alt="Screenshot 2026-09-08 202516" src="https://github.com/user-attachments/assets/16a8301a-3649-47a2-b0d6-d1232837ab69" />
 
 ### 3. Generate sample hashes from known plaintexts
