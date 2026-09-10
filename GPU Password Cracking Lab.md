@@ -119,6 +119,8 @@ Confirmed the card and driver were recognized by the pod with the NVIDIA System 
 
 <img width="1053" height="957" alt="Screenshot 2026-09-08 202516" src="https://github.com/user-attachments/assets/16a8301a-3649-47a2-b0d6-d1232837ab69" />
 
+<figcaption> Confirming GPU recognition with hashcat </figcaption>
+
 ### 3. Generate sample hashes from known plaintexts
 
 To keep the lab self-contained and guarantee crackable targets, I generated all hashes myself from
