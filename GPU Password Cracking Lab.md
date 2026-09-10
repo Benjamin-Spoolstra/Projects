@@ -71,6 +71,8 @@ I provisioned a RunPod network volume in the EU-RO-1 region, and then deployed t
 
 <figcaption> Creating the 30GB container disk </figcaption>
 
+---
+
 The RTX 5090 GPU allocated to the pod is a Blackwell card and is perfectly compatible with hashcat v7.1.2 which requires a CUDA of 12.8 or later. This means the GPU can be properly read and leveraged during processing to significantly reduce the cracking time. 
 
 The Secure Cloud was utilized for this pod to ensure the data and processes occurring stay private to the creator and no other users. Teardown involves secure deallocation and termination of any pod instances such that all sensitive data is removed upon process completion. Access is provisioned via SSH key authentication so no brute forcing is possible.
